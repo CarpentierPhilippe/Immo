@@ -17,6 +17,7 @@ public class UserMapper {
 			default : user = new Advertiser();break;						
 		}
 		user.setPassword(rs.getString("password"));
+		user.setPassword("password");
 		user.setUsername(rs.getString("username"));
 		return user;
 	}
