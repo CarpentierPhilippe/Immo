@@ -14,8 +14,10 @@ public class UserMapper {
 		String ut = rs.getString("user_type");
 		switch (ut) {
 			case "M": user = new Moderator();break;
-			case "A": user = new Advertiser();break;						
-		}						
+			default : user = new Advertiser();break;						
+		}
+		user.setPassword(rs.getString("password"));
+		user.setUsername(rs.getString("username"));
 		return user;
 	}
 	

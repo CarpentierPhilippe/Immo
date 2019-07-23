@@ -3,15 +3,15 @@ package com.edu.realestate.model;
 public class SearchCriteria {
 	
 	private int cityId;
-	private String query;
-	private String type;
-	private int priceMin;
-	private int priceMax;
-	private int areaMin;
-	private int areaMax;
+	private String query; //where description like %query% or title like %query%
+	private String type; //transaction type
+	private int priceMin; // A exclure si abherant (ou 0)
+	private int priceMax; // A exclure si abherant (ou 0)
+	private int areaMin; // A exclure si abherant (ou 0)
+	private int areaMax; // A exclure si abherant (ou 0)
 	private double longitude;
 	private double latitude;
-	private int distance;
+	private int distance; //en km autour de cityID
 	
 	
 	@Override

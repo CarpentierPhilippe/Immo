@@ -34,7 +34,7 @@ public class SearchDaoJDBC extends AbstractDaoJDBC implements ISearchDAO {
 				String aid = rs.getString("advertiser_id");
 				Advertiser ad = (Advertiser) udao.read(aid);
 				int reid = rs.getInt("real_estate_id");
-				RealEstate re = null; //redao.read(reid);
+				RealEstate re = redao.read(reid);
 				
 				//Map
 				Advertisement adv = AdvertiserMapper.resultToAdv(rs, ad, re);
@@ -48,29 +48,3 @@ public class SearchDaoJDBC extends AbstractDaoJDBC implements ISearchDAO {
 		return advs;		
 	}
 }
-
-
-//query = "SELECT * from allproperties a WHERE id ="+reid;
-//ResultSet typeBien = st.executeQuery(query);
-//if (typeBien.next()) {
-//	String tb = typeBien.getString("typeBien");
-//	RealEstate re = null;
-//	switch(tb) {
-//		case "APP":
-//			re = new Apartment();
-//		break;
-//		case "HOUSE" :
-//			re = new House();
-//		break;
-//		case "PRK" :
-//			re = new Parking();
-//		break;
-//		case "LAND" :
-//			re = new Land();
-//		break;
-//		case "COMM" :
-//			re = new OtherProperty();
-//		break;
-//	};
-//	adv.setRealEstate(re);
-//}
