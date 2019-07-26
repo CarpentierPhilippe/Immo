@@ -1,6 +1,6 @@
 package com.edu.realestate.services;
 
-import com.edu.realestate.dao.IUserDao;
+import com.edu.realestate.dao.UserDao;
 import com.edu.realestate.dao.UserDaoJDBC;
 import com.edu.realestate.exceptions.AuthenticationException;
 import com.edu.realestate.model.Advertiser;
@@ -9,7 +9,7 @@ import com.edu.realestate.model.User;
 
 public class UserServiceImpl implements UserService {
 
-	IUserDao userDao;
+	UserDao userDao;
 	@Override
 	public void register(Advertiser adv) {
 		// TODO Auto-generated method stub

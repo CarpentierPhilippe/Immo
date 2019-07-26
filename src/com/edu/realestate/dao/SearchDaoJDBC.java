@@ -12,7 +12,7 @@ import com.edu.realestate.mapping.AdvertiserMapper;
 import com.edu.realestate.model.RealEstate;
 import com.edu.realestate.model.SearchCriteria;
 
-public class SearchDaoJDBC extends AbstractDaoJDBC implements ISearchDAO {
+public class SearchDaoJDBC extends AbstractDaoJDBC implements SearchDao {
 	
 	@Override
 	public List <Advertisement> search(SearchCriteria criteria){

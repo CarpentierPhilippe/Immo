@@ -29,7 +29,7 @@ public class TestJDBC {
 	}
 	
 	public void testCityDAO() {
-		ICityDAO cityDao = new CityDaoJDBC();
+		CityDao cityDao = new CityDaoJDBC();
 		City c = cityDao.read(1);
 		System.out.println(c);
 	}
@@ -49,7 +49,7 @@ public class TestJDBC {
 	}
 
 	public void testDAOReadAll() {
-		ICityDAO cityDao = new CityDaoJDBC();
+		CityDao cityDao = new CityDaoJDBC();
 		List<City> listc = cityDao.readAll();
 		for (int i = 0; i < listc.size() ; i++) {
 			System.out.println(listc.get(i));
@@ -59,7 +59,7 @@ public class TestJDBC {
 	public void testSearchCriteria() {
 		SearchCriteria criteria = new SearchCriteria();
 		criteria.setCityId(30480);
-		ISearchDAO sdao = new SearchDaoJDBC();
+		SearchDao sdao = new SearchDaoJDBC();
 		List<Advertisement> advs = sdao.search(criteria);
 		for (Advertisement a : advs)
 			System.out.println(a);

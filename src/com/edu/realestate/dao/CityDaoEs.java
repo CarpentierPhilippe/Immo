@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.edu.realestate.model.City;
 
-public class CityDaoEs implements ICityDAO {
+public class CityDaoEs implements CityDao {
 
 	@Override
 	public void create(City t) {

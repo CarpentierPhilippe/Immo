@@ -7,7 +7,7 @@ import java.util.List;
 import com.edu.realestate.mapping.RealEstateMapper;
 import com.edu.realestate.model.*;
 
-public class RealEstateDaoJDBC extends AbstractDaoJDBC implements IRealEstateDAO {
+public class RealEstateDaoJDBC extends AbstractDaoJDBC implements RealEstateDao {
 
 	@Override
 	public void create(RealEstate t) {
@@ -36,7 +36,7 @@ public class RealEstateDaoJDBC extends AbstractDaoJDBC implements IRealEstateDAO
 				ResultSet rs2 = st2.executeQuery(query2);
 				if(rs2.next()) {
 					re = RealEstateMapper.resultToRealEstate(rs2, typeBien);
-					ICityDAO cdao = new CityDaoJDBC();
+					CityDao cdao = new CityDaoJDBC();
 					City city = cdao.read(rs2.getInt("city_id"));
 					re.setCity(city);
 				}

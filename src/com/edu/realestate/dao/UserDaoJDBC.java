@@ -12,7 +12,7 @@ import com.edu.realestate.model.Advertiser;
 import com.edu.realestate.model.Moderator;
 import com.edu.realestate.model.User;
 
-public class UserDaoJDBC extends AbstractDaoJDBC implements IUserDao {
+public class UserDaoJDBC extends AbstractDaoJDBC implements UserDao {
 
 	@Override
 	public void create(User t) {

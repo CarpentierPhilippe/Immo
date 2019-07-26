@@ -3,7 +3,7 @@ package com.edu.realestate.dao;
 import com.edu.realestate.exceptions.AuthenticationException;
 import com.edu.realestate.model.User;
 
-public interface IUserDao extends AbstractDao<User> {
+public interface UserDao extends AbstractDao<User> {
 
 	User read(String username);
 

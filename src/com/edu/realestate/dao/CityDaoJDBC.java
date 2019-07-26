@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.edu.realestate.model.City;
 
-public class CityDaoJDBC extends AbstractDaoJDBC implements ICityDAO  {
+public class CityDaoJDBC extends AbstractDaoJDBC implements CityDao  {
 
 	@Override
 	public void create(City city) {
