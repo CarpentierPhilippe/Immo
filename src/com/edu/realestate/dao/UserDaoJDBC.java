@@ -1,15 +1,13 @@
 package com.edu.realestate.dao;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.edu.realestate.exceptions.AuthenticationException;
 import com.edu.realestate.mapping.UserMapper;
-import com.edu.realestate.model.Advertiser;
-import com.edu.realestate.model.Moderator;
+import com.edu.realestate.model.Advertisement;
 import com.edu.realestate.model.User;
 
 public class UserDaoJDBC extends AbstractDaoJDBC implements UserDao {
@@ -22,8 +20,7 @@ public class UserDaoJDBC extends AbstractDaoJDBC implements UserDao {
 
 	@Override
 	public User read(Integer id) {
-//		throw new Exception("Users doesn't has any ID");
-		return null;
+		throw new UnsupportedOperationException("Not supported.");
 	}
 
 	@Override
@@ -92,6 +89,24 @@ public class UserDaoJDBC extends AbstractDaoJDBC implements UserDao {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	@Override
+	public void disconnect(User u) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(String username) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void favAdvertisement(User u, Advertisement adv) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

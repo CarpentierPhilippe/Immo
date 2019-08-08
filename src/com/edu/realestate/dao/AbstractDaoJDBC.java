@@ -15,7 +15,7 @@ public abstract class AbstractDaoJDBC {
 			String connectURL = "jdbc:mysql://localhost:3307/realestate"+connectParam;
 			String user = "root";
 			String password = "";
-			Class clz = Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection(connectURL,user,password);
 			}catch(ClassNotFoundException | SQLException e) {
 				e.printStackTrace();

@@ -1,11 +1,13 @@
 package com.edu.realestate.services;
 
 import com.edu.realestate.exceptions.AuthenticationException;
+import com.edu.realestate.model.Advertisement;
 import com.edu.realestate.model.Advertiser;
 import com.edu.realestate.model.Moderator;
 import com.edu.realestate.model.User;
 
 public interface UserService {
+
 
 	void register(Advertiser adv);
 	
@@ -16,4 +18,10 @@ public interface UserService {
 	
 	void disconnect(User u);
 	
+	void updateUser(User u);
+	
+	
+	void favAdvertisement(User u, Advertisement adv);
+
+	void deleteUser(String username);
 }

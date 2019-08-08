@@ -2,8 +2,6 @@ package com.edu.realestate.dao;
 
 import java.util.List;
 
-import com.edu.realestate.model.City;
-
 public interface AbstractDao<T> {
 	
 	void create(T t);

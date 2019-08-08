@@ -3,35 +3,51 @@ package com.edu.realestate.services;
 import com.edu.realestate.dao.UserDao;
 import com.edu.realestate.dao.UserDaoJDBC;
 import com.edu.realestate.exceptions.AuthenticationException;
+import com.edu.realestate.model.Advertisement;
 import com.edu.realestate.model.Advertiser;
 import com.edu.realestate.model.Moderator;
 import com.edu.realestate.model.User;
 
 public class UserServiceImpl implements UserService {
 
-	UserDao userDao;
+	UserDao userDao = new UserDaoJDBC();
+	
 	@Override
 	public void register(Advertiser adv) {
-		// TODO Auto-generated method stub
-		userDao = new UserDaoJDBC();
+		userDao.create(adv);
 	}
 
 	@Override
 	public void register(Moderator mod) {
-		// TODO Auto-generated method stub
-
+		userDao.create(mod);
 	}
 
 	@Override
 	public User authenticate(String login, String password) throws AuthenticationException {
-		// TODO Auto-generated method stub
 		return userDao.authenticate(login, password);
 	}
 
 	@Override
 	public void disconnect(User u) {
-		// TODO Auto-generated method stub
+		userDao.disconnect(u);
+	}
 
+	@Override
+	public void updateUser(User u) {
+		userDao.update(u);
+		
+	}
+
+	@Override
+	public void deleteUser(String username) {
+		userDao.delete(username);
+		
+	}
+
+	@Override
+	public void favAdvertisement(User u, Advertisement adv) {
+		userDao.favAdvertisement(u, adv);
+		
 	}
 
 }
