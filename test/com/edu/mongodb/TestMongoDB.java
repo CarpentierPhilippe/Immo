@@ -2,7 +2,6 @@ package com.edu.mongodb;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
-import com.mongodb.client.MongoDatabase;
 
 public class TestMongoDB {
 

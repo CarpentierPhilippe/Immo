@@ -1,27 +1,34 @@
 package com.edu.realestate.model;
 
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+
+import com.edu.realestate.convert.BooleanToStringConverter;
+
+@Entity
+@PrimaryKeyJoinColumn(name="id")
 public class House extends NiceEstate {
 
-	private int rooms;
-	private int landArea;
-	private boolean cellar;
-	private boolean alarm;
-	private boolean swimmingPool;
+	@Column (name="land_area")
+	private Integer landArea;
+	@Convert(converter=BooleanToStringConverter.class)
+	private Boolean cellar;
+	@Convert(converter=BooleanToStringConverter.class)
+	private Boolean alarm;
+	@Convert(converter=BooleanToStringConverter.class)
+	@Column (name="swimming_pool")
+	private Boolean swimmingPool;
 
-	public Integer getRooms() {
-		return rooms;
-	}
-
-	public void setRooms(Integer rooms) {
-		this.rooms = rooms;
-	}
 
 	public Integer getLandArea() {
 		return landArea;
 	}
 
 	public void setLandArea(Integer landArea) {
-		this.landArea = landArea;
+			this.landArea = landArea;
 	}
 
 	public boolean isCellar() {
@@ -48,11 +55,15 @@ public class House extends NiceEstate {
 		this.swimmingPool = swimmingPool;
 	}
 
+
+	public void setLandArea(int landArea) {
+		this.landArea = landArea;
+	}
+
 	@Override
 	public String toString() {
-		return "House [rooms=" + rooms + ", energyLevel=" 
-				+ energyLevel + ", landArea=" + landArea 
-				+ ", gasLevel=" + gasLevel + ", cellar=" + cellar 
+		return "House [landArea=" + landArea 
+				+ ", cellar=" + cellar 
 				+ ", alarm=" + alarm + ", swimmingPool=" + swimmingPool 
 				+ super.toString() + "]";
 	}

@@ -26,6 +26,8 @@ public class SearchCriteria {
 		this.cityId = cityId;
 	}
 	public String getQuery() {
+		if (query != null)
+			query.trim();
 		return query;
 	}
 	public void setQuery(String query) {

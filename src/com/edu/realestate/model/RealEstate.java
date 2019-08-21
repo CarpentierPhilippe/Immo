@@ -1,12 +1,31 @@
 package com.edu.realestate.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+
+@Entity
+@Table (name="real_estate")
+@Inheritance(strategy=InheritanceType.JOINED)
 public abstract class RealEstate {
 	
 	// ATTRIBUTS
-	protected int id;
-	protected int price;
-	protected int area;
-	protected boolean available;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	protected Integer id;
+	protected Integer price;
+	protected Integer area;
+	@Type (type = "yes_no")
+	protected Boolean available;
+	@ManyToOne @JoinColumn(name="city_id")
 	private City city;
 
 	// CONSTRUCTEURS

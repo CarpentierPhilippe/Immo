@@ -1,8 +1,8 @@
 package com.edu.realestate.services;
 
-import com.edu.realestate.exceptions.AuthenticationException;
-import com.edu.realestate.model.Advertiser;
-import com.edu.realestate.model.Moderator;
+//import com.edu.realestate.exceptions.AuthenticationException;
+//import com.edu.realestate.model.Advertiser;
+//import com.edu.realestate.model.Moderator;
 
 public class TestUserService {
 	

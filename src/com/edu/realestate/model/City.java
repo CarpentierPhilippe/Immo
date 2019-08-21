@@ -1,12 +1,17 @@
 package com.edu.realestate.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public final class City {
 
-	private int id;
+	@Id
+	private Integer id;
 	private String name;
 	private String postcode;
-	private double longitude;
-	private double latitude;
+	private Double longitude;
+	private Double latitude;
 
 	public City() {};
 

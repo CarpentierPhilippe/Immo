@@ -1,10 +1,5 @@
 package com.edu.jdbc;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +18,7 @@ public class TestJDBC {
 		Date d = new Date();
 		System.out.println(d);
 		
-		Class clz = Class.forName("java.util.Date");
+		Class<?> clz = Class.forName("java.util.Date");
 		Object o = clz.newInstance();
 		System.out.println(o);	
 	}

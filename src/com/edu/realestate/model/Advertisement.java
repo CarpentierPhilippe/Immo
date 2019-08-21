@@ -1,25 +1,50 @@
 package com.edu.realestate.model;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
+
+
+@Entity
 public class Advertisement {
 
-	static DateFormat df = new SimpleDateFormat("yy");
-		
-	private int id;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	private String title;
+	@Enumerated (EnumType.STRING)
 	private AdStatus status;
+	@Enumerated (EnumType.STRING)
+	@Column(name="transaction_type")
 	private TransactionType transactionType;
+	@Column(name="release_date")
 	private LocalDate releaseDate;
 	private String description;
+	@Column(name="ad_number")
 	private String adNumber;
+	@Column(name="refused_comment")
 	private String refusedComment;
+	@ManyToOne @JoinColumn(name="advertiser_id")
 	private Advertiser advertiser;
+	@OneToOne @JoinColumn(name="real_estate_id")
 	private RealEstate realEstate;
-		
+	@OneToMany (fetch=FetchType.LAZY)
+	@JoinColumn(name="advertisement_id")
+	@OrderBy ("id")
 	private List<Picture> pictures;
 
 	public Advertisement() {

@@ -1,17 +1,33 @@
 package com.edu.realestate.model;
 
+import javax.persistence.Convert;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+
+import com.edu.realestate.convert.BooleanToStringConverter;
+
+@Entity
+@PrimaryKeyJoinColumn(name="id")
 public class Apartment extends NiceEstate {
 
-	private int rooms;
 	private String floor;
-	private boolean elevator;
-	private boolean intercom;
-	private boolean balcony;
-	private boolean terrace;
-	private boolean garage;
-	private boolean parking;
-	private boolean alarm;
-	private boolean digicode;
+	@Convert(converter=BooleanToStringConverter.class)
+	private Boolean elevator;
+	@Convert(converter=BooleanToStringConverter.class)
+	private Boolean intercom;
+	@Convert(converter=BooleanToStringConverter.class)
+	private Boolean balcony;
+	@Convert(converter=BooleanToStringConverter.class)
+	private Boolean terrace;
+	@Convert(converter=BooleanToStringConverter.class)
+	private Boolean garage;
+	@Convert(converter=BooleanToStringConverter.class)
+	private Boolean parking;
+	@Convert(converter=BooleanToStringConverter.class)
+	private Boolean alarm;
+	@Convert(converter=BooleanToStringConverter.class)
+	private Boolean digicode;
 
 	public Apartment() {
 		super();
@@ -20,15 +36,6 @@ public class Apartment extends NiceEstate {
 	
 	public Apartment(Integer rooms) {
 		super();
-		this.rooms = rooms;
-	}
-
-
-	public int getRooms() {
-		return rooms;
-	}
-
-	public void setRooms(int rooms) {
 		this.rooms = rooms;
 	}
 
@@ -116,8 +123,7 @@ public class Apartment extends NiceEstate {
 
 	@Override
 	public String toString() {
-		return "Appartement [rooms=" + rooms + ", floor=" + floor + ", energyLevel=" + energyLevel + ", gasLevel="
-				+ gasLevel + ", elevator=" + elevator + ", intercom=" + intercom + ", balcony=" + balcony + ", terrace="
+		return "Appartement [rooms=" + rooms + ", floor=" + floor + ", elevator=" + elevator + ", intercom=" + intercom + ", balcony=" + balcony + ", terrace="
 				+ terrace + ", garage=" + garage + ", parking=" + parking + ", alarm=" + alarm + ", digicode="
 				+ digicode + ", id=" + id + ", price=" + price + ", area=" + area + ", available=" + available + "]";
 	}
