@@ -8,8 +8,9 @@
 		<property name="hibernate.enable_lazy_load_no_trans">
 			true
 		</property>
+		<!-- Already done in the config.properties -->
 		<property name="hibernate.connection.driver_class">
-			com.mysql.jdbc.Driver
+			com.mysql.cj.jdbc.Driver
 		</property>
 		
 		<property name="hibernate.connection.url">
@@ -18,17 +19,16 @@
 		
 		<property name="hibernate.connection.username">scott</property>
 		<property name="hibernate.connection.password">tiger</property>
-	
 		<property name="dialect">
 			org.hibernate.dialect.MySQL5Dialect
 		</property>
+
 		<property name="hibernate.show_sql">false</property>
 		<property name="hibernate.format_sql">true</property>
 		
 		<property name="hibernate.current_session_context_class">thread</property>
 		
 		<mapping class="com.edu.realestate.model.City"/>
-
 		<mapping class="com.edu.realestate.model.User"/>
 		<mapping class="com.edu.realestate.model.Moderator"/>
 		<mapping class="com.edu.realestate.model.Advertiser"/>
@@ -39,9 +39,7 @@
 		<mapping class="com.edu.realestate.model.OtherProperty"/>
 		<mapping class="com.edu.realestate.model.CommercialProperty"/>
 		<mapping class="com.edu.realestate.model.House"/>
-		
 		<mapping class="com.edu.realestate.model.Advertisement"/>
-		
 		<mapping class="com.edu.realestate.model.Picture"/>
 		
 	</session-factory>

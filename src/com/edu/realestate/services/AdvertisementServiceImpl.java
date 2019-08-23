@@ -2,8 +2,10 @@ package com.edu.realestate.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.edu.realestate.dao.AdvertisementDao;
-import com.edu.realestate.dao.AdvertisementDaoTest;
 import com.edu.realestate.exceptions.RealEstateException;
 import com.edu.realestate.model.AdStatus;
 import com.edu.realestate.model.Advertisement;
@@ -11,9 +13,11 @@ import com.edu.realestate.model.City;
 import com.edu.realestate.model.Picture;
 import com.edu.realestate.model.User;
 
+@Repository
 public class AdvertisementServiceImpl implements AdvertisementService {
 
-	private AdvertisementDao advertisementDao = new AdvertisementDaoTest();
+	@Autowired
+	private AdvertisementDao advertisementDao;
 	
 	@Override
 	public Advertisement findAdvertisementById(int id) throws RealEstateException {
@@ -72,7 +76,6 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 	@Override
 	public void updateAdvertisement(Advertisement ad) throws RealEstateException {
 		advertisementDao.update(ad);
-		
 	}
 
 	@Override

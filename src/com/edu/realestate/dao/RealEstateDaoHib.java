@@ -2,8 +2,11 @@ package com.edu.realestate.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.edu.realestate.model.RealEstate;
 
+@Repository
 public class RealEstateDaoHib extends AbstractDaoJDBC implements RealEstateDao {
 
 	@Override

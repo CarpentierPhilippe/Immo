@@ -2,23 +2,22 @@ package com.edu.realestate.services;
 
 import java.util.List;
 
-import com.edu.realestate.dao.CityDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.edu.realestate.dao.SearchDao;
-import com.edu.realestate.dao.SearchDaoJDBC;
 import com.edu.realestate.exceptions.RealEstateException;
 import com.edu.realestate.model.Advertisement;
 import com.edu.realestate.model.City;
 import com.edu.realestate.model.SearchCriteria;
 
+@Repository
 public class ReferenceServiceImpl implements ReferenceService {
 
+	@Autowired
 	SearchDao searchDao;
-	CityDao cityDao;
 	
-	public ReferenceServiceImpl() {
-		searchDao = new SearchDaoJDBC();
-		
-	}
+
 	@Override
 	public List<City> findCitiesByName(String cityName) throws RealEstateException {
 		List<City> cities = searchDao.search(cityName);

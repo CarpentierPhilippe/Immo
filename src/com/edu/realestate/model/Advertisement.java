@@ -1,7 +1,10 @@
 package com.edu.realestate.model;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,11 +19,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
+import javax.persistence.PrePersist;
 
 
 @Entity
 public class Advertisement {
 
+	private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMdd");
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -149,6 +154,17 @@ public class Advertisement {
 		this.pictures = pictures;
 	}
 
+	@PrePersist
+	private void avantDeSauver() {
+		if (adNumber == null || adNumber.isEmpty()) {
+			Random rnd = new Random();
+			int n = 1000+ rnd.nextInt();
+			adNumber = "A"+ simpleDateFormat.format(new Date())+n;
+		}
+	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Advertisement [id=" + id + ", title=" + title + ", status=" + status + ", transactionType="

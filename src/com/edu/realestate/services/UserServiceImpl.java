@@ -1,16 +1,20 @@
 package com.edu.realestate.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.edu.realestate.dao.UserDao;
-import com.edu.realestate.dao.UserDaoJDBC;
 import com.edu.realestate.exceptions.AuthenticationException;
 import com.edu.realestate.model.Advertisement;
 import com.edu.realestate.model.Advertiser;
 import com.edu.realestate.model.Moderator;
 import com.edu.realestate.model.User;
 
+@Repository
 public class UserServiceImpl implements UserService {
 
-	UserDao userDao = new UserDaoJDBC();
+	@Autowired
+	UserDao userDao;
 	
 	@Override
 	public void register(Advertiser adv) {

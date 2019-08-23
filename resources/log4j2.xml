@@ -1,3 +1,4 @@
+<!DOCTYPE xml>
 <Configuration monitorInterval="60">
     <Properties>
         <Property name="log-path">PropertiesConfiguration</Property>
@@ -6,13 +7,13 @@
         <Console name="Console-Appender" target="SYSTEM_OUT">
             <PatternLayout>
                 <pattern>
-                    [%-5level] [%t] - %c{1}%n%msg%n
+                    [%-5level] [%t] - %c{1} - %msg%n
                 </pattern>>
             </PatternLayout>
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="org.hibernate" level="error" additivity="false">
+        <Logger name="org.hibernate" level="info" additivity="false">
             <AppenderRef ref="Console-Appender"/>
         </Logger>
         <Root level="info">

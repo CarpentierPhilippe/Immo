@@ -2,19 +2,20 @@ package com.edu.realestate.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.edu.realestate.dao.AdvertisementDao;
-import com.edu.realestate.dao.AdvertisementDaoJDBC;
-import com.edu.realestate.dao.UserDao;
-import com.edu.realestate.dao.UserDaoJDBC;
 import com.edu.realestate.exceptions.RealEstateException;
 import com.edu.realestate.model.AdStatus;
 import com.edu.realestate.model.Advertisement;
 import com.edu.realestate.model.User;
 
+@Repository
 public class ModeratorServiceImpl implements ModeratorService {
 
-	AdvertisementDao advertisementDao = new AdvertisementDaoJDBC();
-	UserDao userDao = new UserDaoJDBC();
+	@Autowired
+	AdvertisementDao advertisementDao;
 	
 	@Override
 	public void validateAdvertisement(int adId) {

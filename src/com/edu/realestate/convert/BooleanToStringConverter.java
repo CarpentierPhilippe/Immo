@@ -6,7 +6,7 @@ public class BooleanToStringConverter implements AttributeConverter<Boolean, Str
     @Override  //OBJ to DB
     public String convertToDatabaseColumn(Boolean attribute) {
         // TODO Auto-generated method stub
-        return (attribute.booleanValue() ? "Y" : "N");
+        return (attribute != null && attribute.booleanValue() ? "Y" : "N");
     }
     @Override //DB to OBJ
     public Boolean convertToEntityAttribute(String dbData) {

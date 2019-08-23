@@ -1,5 +1,6 @@
 package com.edu.realestate.model;
 
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Type;
+import com.edu.realestate.convert.BooleanToStringConverter;
 
 @Entity
 @Table (name="real_estate")
@@ -23,7 +24,7 @@ public abstract class RealEstate {
 	protected Integer id;
 	protected Integer price;
 	protected Integer area;
-	@Type (type = "yes_no")
+	@Convert(converter=BooleanToStringConverter.class)
 	protected Boolean available;
 	@ManyToOne @JoinColumn(name="city_id")
 	private City city;
