@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.edu.realestate.exceptions.AuthenticationException;
 import com.edu.realestate.model.Advertisement;
+import com.edu.realestate.model.Favoris;
 import com.edu.realestate.model.User;
 
 @Repository
@@ -16,32 +17,32 @@ public class UserDaoHib extends AbstractDaoHib implements UserDao{
 
 	@Override
 	public void create(User t) {
-		// TODO Auto-generated method stub
-		
+    	Session session = getSession();
+        session.save(t);
 	}
 
 	@Override
 	public User read(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException("Don't use read(Integer), use read(String)");
 	}
 
 	@Override
 	public List<User> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> result = null;
+    	Session session = getSession();
+        result = session.createQuery("from User", User.class).setMaxResults(25).list();
+		return result;
 	}
 
 	@Override
 	public void update(User t) {
-		// TODO Auto-generated method stub
-		
+    	Session session = getSession();
+        session.update(t);
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-		
+		throw new UnsupportedOperationException("Don't use delete(Integer), use delete(String)");
 	}
 
 	@Override
@@ -54,26 +55,43 @@ public class UserDaoHib extends AbstractDaoHib implements UserDao{
 
 	@Override
 	public User authenticate(String username, String password) throws AuthenticationException {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> result = null;
+    	Session session = getSession();
+    	String hql = "from User u where u.username = :username and u.password = :password";
+    	result = session.createQuery(hql, User.class).setParameter("username", username).setParameter("password", password).list();
+        if (result !=null && result.size() == 1) {
+        	return result.get(0);
+        }else {
+    	throw new AuthenticationException("Mot de passe ou nom d'utilisateur incorrect");
+        }
 	}
 
 	@Override
 	public void disconnect(User u) {
-		// TODO Auto-generated method stub
-		
+		//TODO
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public void delete(String username) {
-		// TODO Auto-generated method stub
-		
+		Session session = getSession();
+        session.delete(this.read(username));
 	}
 
 	@Override
 	public void favAdvertisement(User u, Advertisement adv) {
-		// TODO Auto-generated method stub
-		
+		Session session = getSession();
+		Favoris fav = new Favoris();
+		fav.setOwner(u);
+		fav.setAdvertisement(adv);
+		session.save(fav);
+	}
+
+	@Override
+	public void unfavAdvertisement(User u, Advertisement adv) {
+		Session session = getSession();
+		Favoris fav = session.createQuery("from Favoris f where f.owner = :u and f.advertisement = :adv", Favoris.class).setParameter("u", u).setParameter("adv", adv).getSingleResult();
+		session.delete(fav);
 	}
 
 }

@@ -2,41 +2,44 @@ package com.edu.realestate.dao;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.edu.realestate.model.RealEstate;
 
 @Repository
-public class RealEstateDaoHib extends AbstractDaoJDBC implements RealEstateDao {
+public class RealEstateDaoHib extends AbstractDaoHib implements RealEstateDao {
 
 	@Override
 	public void create(RealEstate t) {
-		// TODO Auto-generated method stub
-
+		Session session = getSession();
+        session.save(t);
 	}
 
 	@Override
 	public RealEstate read(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = getSession();
+		RealEstate result = session.load(RealEstate.class, id);
+		return result;
 	}
 
 	@Override
 	public List<RealEstate> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = getSession();
+		List<RealEstate> result = session.createQuery("from RealEstate", RealEstate.class).list();
+		return result;
 	}
 
 	@Override
 	public void update(RealEstate t) {
-		// TODO Auto-generated method stub
-
+		Session session = getSession();
+        session.update(t);
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-
+		Session session = getSession();
+        session.delete(this.read(id));
 	}
 
 }

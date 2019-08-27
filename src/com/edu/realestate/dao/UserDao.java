@@ -15,4 +15,6 @@ public interface UserDao extends AbstractDao<User> {
 	public void delete(String username);
 
 	public void favAdvertisement(User u, Advertisement adv);
+
+	public void unfavAdvertisement(User u, Advertisement adv);
 }

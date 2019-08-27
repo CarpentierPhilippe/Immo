@@ -60,10 +60,4 @@ public class SearchDaoJDBC extends AbstractDaoJDBC implements SearchDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public void register(City city) {
-		// TODO Auto-generated method stub
-		
-	}
 }

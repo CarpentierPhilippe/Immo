@@ -53,5 +53,11 @@ public class UserServiceImpl implements UserService {
 		userDao.favAdvertisement(u, adv);
 		
 	}
+	
+	@Override
+	public void unfavAdvertisement(User u, Advertisement adv) {
+		userDao.unfavAdvertisement(u, adv);
+		
+	}
 
 }

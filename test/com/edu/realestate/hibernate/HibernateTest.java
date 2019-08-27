@@ -27,6 +27,7 @@ import com.edu.realestate.dao.CityDaoHib;
 import com.edu.realestate.dao.SearchDao;
 import com.edu.realestate.dao.SearchDaoHib;
 import com.edu.realestate.dao.UserDao;
+import com.edu.realestate.exceptions.AuthenticationException;
 import com.edu.realestate.exceptions.RealEstateException;
 import com.edu.realestate.model.*;
 import com.edu.realestate.services.AdvertisementService;
@@ -44,17 +45,79 @@ public class HibernateTest {
 		ApplicationContext springCtx = new AnnotationConfigApplicationContext(TestConfig.class);
 		
 		HibernateTest hibTest = new HibernateTest();
+		try {
+			hibTest.userServiceTest(springCtx);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void referenceServiceTest(ApplicationContext springCtx) throws Exception {
+		ReferenceService service = springCtx.getBean(ReferenceService.class);
+		
 		SearchCriteria crit = new SearchCriteria();
 		crit.setQuery("Achat");
 		crit.setCityId(1370);
 		crit.setAreaMax(50);
 		crit.setAreaMin(30);
 		crit.setDistance(30);
-		try {
-			hibTest.AdvertisementServiceTest(springCtx);
-		} catch (RealEstateException e) {
-			e.printStackTrace();
-		}
+		
+		/*
+		service.findAdsByCriteria(criteria);
+		*/
+		/* TODO
+		service.findCitiesByName(input);
+		service.listCities();
+		service.register(city);
+		service.delete(city);
+		*/
+	}
+
+	public void userServiceTest(ApplicationContext springCtx) throws RealEstateException, AuthenticationException {
+		UserService service = springCtx.getBean(UserService.class);
+		AdvertisementService advService = springCtx.getBean(AdvertisementService.class);
+		
+		User user = service.authenticate("jmd@yahoo.fr", "pomme");
+		LOGGER.info("User Authenticate : "+user);
+		
+		Advertiser advertiser = new Advertiser();
+		advertiser.setUsername("toSupp@gmail.com");
+		advertiser.setPassword("test");
+		/*
+		service.register(advertiser);
+		LOGGER.info("User Created : "+advertiser);
+		*/
+		/*
+		service.deleteUser(advertiser.getUsername());
+		LOGGER.info("User deleted : "+advertiser);
+		*/
+		/*/!\NOT TESTED
+		 * TODO
+		service.disconnect(user);
+		*/
+		
+		Advertisement adv = advService.findAdvertisementById(2);
+		/*
+		service.favAdvertisement(user, adv);
+		LOGGER.info("fav created : "+advertiser);
+		*/
+		/*
+		service.unfavAdvertisement(user, adv);
+		LOGGER.info("unfaved");
+		*/
+		/*
+		Moderator mod = new Moderator();
+		mod.setUsername("moderator@realEstate.com");
+		mod.setPassword("re");
+		service.register(mod);
+		LOGGER.info("new mod : "+mod);
+		*/
+		/*
+		((Advertiser) user).setPhone("0655443321");
+		service.updateUser(user);
+		LOGGER.info("Updated user : "+user);
+		*/
+		
 	}
 
 	public void AdvertisementServiceTest(ApplicationContext springCtx) throws RealEstateException {
@@ -107,24 +170,25 @@ public class HibernateTest {
 		for ( Advertisement a : advs)
 			LOGGER.info(a);
 		*/
-		
-		
-		//!\ ATTENTION BUG /!\
-//		UserDao userDao = springCtx.getBean(UserDao.class);
-//		User u = userDao.read("jmd@yahoo.fr");
-//		LOGGER.info("User : "+u);
-//		List<Advertisement> advs = service.findFavorite(u);
-//		for ( Advertisement a : advs)
-//			LOGGER.info(a);
-//		
-//		List<Advertisement> advs = service.findBestAds();
-//		for ( Advertisement a : advs)
-//			LOGGER.info(a);
-		
-//	??	service.findPictureByAdId(aid);
-		
-//		service.findFavorite(u);
-		
+		/*
+		UserDao userDao = springCtx.getBean(UserDao.class);
+		User u = userDao.read("jmd@yahoo.fr");
+		LOGGER.info("User : "+u);
+		LOGGER.info(u.getFavoris());
+		List<Advertisement> advs = service.findFavorite(u);
+		for ( Advertisement a : advs)
+			LOGGER.info(a);
+		*/
+		/*
+		List<Advertisement> advs = service.findBestAds();
+		for ( Advertisement a : advs)
+			LOGGER.info(a);
+		*/
+		/*
+		List<Picture> pictures = service.findPictureByAdId(3);
+		for ( Picture picture : pictures)
+			LOGGER.info(picture);
+		*/
 	}
 	
 	
@@ -200,7 +264,8 @@ public class HibernateTest {
 			LOGGER.info(i);
 		
 	}
-		
+*/
+	/*
 	public void searchCriteria(SearchCriteria criteria) {
 		Transaction transaction = null;
 		List<Advertisement> results = null;
@@ -232,7 +297,8 @@ public class HibernateTest {
 		for (Advertisement result : results)
 			LOGGER.info(result);
 	}
-
+*/
+	/*
 	public void searchCriteriaComplete(SearchCriteria criteria) {
 		Transaction transaction = null;
 		List<Advertisement> results = null;
@@ -306,9 +372,7 @@ public class HibernateTest {
 
 	}
 /*
-	@SuppressWarnings("unchecked")
-
-	public void incompletSearch() {
+	@SuppressWarnings("unchecked")	public void incompletSearch() {
 		Transaction transaction = null;
 		List<String> results = null;
         try (
@@ -368,6 +432,7 @@ public class HibernateTest {
 		
 		
 	}
+	*/
 /*
 	public void testInitial() {
 	

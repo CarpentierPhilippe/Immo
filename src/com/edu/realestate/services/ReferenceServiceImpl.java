@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.edu.realestate.dao.CityDao;
 import com.edu.realestate.dao.SearchDao;
 import com.edu.realestate.exceptions.RealEstateException;
 import com.edu.realestate.model.Advertisement;
@@ -16,6 +17,8 @@ public class ReferenceServiceImpl implements ReferenceService {
 
 	@Autowired
 	SearchDao searchDao;
+	@Autowired
+	CityDao cityDao;
 	
 
 	@Override
@@ -35,9 +38,15 @@ public class ReferenceServiceImpl implements ReferenceService {
 		List<City> cities = searchDao.search();
 		return cities;
 	}
+	
 	@Override
 	public void register(City city) {
-		searchDao.register(city);
+		cityDao.create(city);
+	}
+	
+	@Override
+	public void delete(City city) {
+		cityDao.delete(city.getId());
 	}
 
 }

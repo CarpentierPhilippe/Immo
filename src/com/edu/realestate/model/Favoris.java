@@ -12,16 +12,16 @@ public class Favoris {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	@OneToOne @JoinColumn(name="owner")
 	private User owner;
 	@OneToOne @JoinColumn(name="advertisement_id")
 	private Advertisement advertisement;
-	private int priority;
+	private Integer priority;
 	private String comments;
 	
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -39,7 +39,7 @@ public class Favoris {
 	public void setAdvertisement(Advertisement advertisement) {
 		this.advertisement = advertisement;
 	}
-	public int getPriority() {
+	public Integer getPriority() {
 		return priority;
 	}
 	public void setPriority(int priority) {

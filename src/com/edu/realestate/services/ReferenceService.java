@@ -16,4 +16,6 @@ public interface ReferenceService {
 	List<City> listCities();
 
 	void register(City city);
+
+	void delete(City city);
 }

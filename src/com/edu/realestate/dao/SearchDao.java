@@ -13,7 +13,4 @@ public interface SearchDao {
 	List<City> search(String cityName);
 
 	List<City> search();
-
-	void register(City city);
-
 }

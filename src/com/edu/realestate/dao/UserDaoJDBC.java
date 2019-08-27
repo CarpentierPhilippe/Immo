@@ -109,4 +109,10 @@ public class UserDaoJDBC extends AbstractDaoJDBC implements UserDao {
 		
 	}
 
+	@Override
+	public void unfavAdvertisement(User u, Advertisement adv) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

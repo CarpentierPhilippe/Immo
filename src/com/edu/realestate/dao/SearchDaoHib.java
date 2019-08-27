@@ -87,20 +87,17 @@ public class SearchDaoHib extends AbstractDaoHib implements SearchDao {
 
 	@Override
 	public List<City> search(String cityName) {
-		// TODO Auto-generated method stub
-		return null;
+		List<City> result = null;
+    	Session session = getSession();
+        result = session.createQuery("from City c where c.name = :cityName", City.class).setParameter("cityName", cityName).list();
+		return result;
 	}
 
 	@Override
 	public List<City> search() {
-		// TODO Auto-generated method stub
-		return null;
+		List<City> result = null;
+    	Session session = getSession();
+        result = session.createQuery("from City", City.class).list();
+		return result;
 	}
-
-	@Override
-	public void register(City city) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

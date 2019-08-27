@@ -30,7 +30,7 @@ public class CityDaoHib extends AbstractDaoHib implements CityDao {
 	@Override
 	public List<City> readAll() {
 		Session session = getSession();
-		List<City>    result = session.createQuery("from City", City.class).list();
+		List<City> result = session.createQuery("from City", City.class).list();
 		return result;
 	}
 
@@ -43,7 +43,7 @@ public class CityDaoHib extends AbstractDaoHib implements CityDao {
 	@Override
 	public void delete(Integer id) {
 		Session session = getSession();
-            session.delete(this.read(id));;
+            session.delete(this.read(id));
 	}
 
 }

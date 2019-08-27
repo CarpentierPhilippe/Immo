@@ -24,4 +24,6 @@ public interface UserService {
 	void favAdvertisement(User u, Advertisement adv);
 
 	void deleteUser(String username);
+
+	void unfavAdvertisement(User s, Advertisement adv);
 }

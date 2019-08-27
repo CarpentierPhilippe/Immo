@@ -1,6 +1,9 @@
 package com.edu.realestate.services;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,6 +13,7 @@ import com.edu.realestate.exceptions.RealEstateException;
 import com.edu.realestate.model.AdStatus;
 import com.edu.realestate.model.Advertisement;
 import com.edu.realestate.model.City;
+import com.edu.realestate.model.Favoris;
 import com.edu.realestate.model.Picture;
 import com.edu.realestate.model.User;
 
@@ -63,8 +67,15 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 
 	@Override
 	public List<Advertisement> findFavorite(User u) throws RealEstateException {
-		List<Advertisement> advs = advertisementDao.readAllByFav(u);
-		return advs;
+		Stream<Favoris> favs = u.getFavoris().stream();
+		Function<Favoris,Advertisement> function = new Function<Favoris,Advertisement>(){
+			@Override
+			public Advertisement apply(Favoris t) {
+				return t.getAdvertisement();
+			}
+		};
+		List<Advertisement> result = favs.map(function).collect(Collectors.toList());
+		return result;
 	}
 
 	@Override
