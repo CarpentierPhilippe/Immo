@@ -4,15 +4,12 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.edu.realestate.exceptions.AuthenticationException;
 import com.edu.realestate.model.Advertisement;
 import com.edu.realestate.model.Favoris;
 import com.edu.realestate.model.User;
 
 @Repository
-@Transactional
 public class UserDaoHib extends AbstractDaoHib implements UserDao{
 
 	@Override
@@ -57,12 +54,13 @@ public class UserDaoHib extends AbstractDaoHib implements UserDao{
 	public User authenticate(String username, String password) throws AuthenticationException {
 		List<User> result = null;
     	Session session = getSession();
+    	System.out.println(session);
     	String hql = "from User u where u.username = :username and u.password = :password";
     	result = session.createQuery(hql, User.class).setParameter("username", username).setParameter("password", password).list();
         if (result !=null && result.size() == 1) {
         	return result.get(0);
         }else {
-    	throw new AuthenticationException("Mot de passe ou nom d'utilisateur incorrect");
+        	throw new AuthenticationException("Mot de passe ou nom d'utilisateur incorrect");
         }
 	}
 

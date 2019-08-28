@@ -2,13 +2,12 @@ package com.edu.realestate.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,8 +20,12 @@ public abstract class User {
 	@Id
 	protected String username;
 	protected String password;
-	@OneToMany (fetch=FetchType.LAZY)
-	@JoinColumn(name="owner")
+	
+	@OneToMany(
+	  cascade = CascadeType.ALL,
+	  orphanRemoval = true,
+	  mappedBy = "owner"
+	 )
 	protected List<Favoris> favoris;
 
 	public String getUsername() {
@@ -42,11 +45,12 @@ public abstract class User {
 	}
 
 	public List<Favoris> getFavoris() {
-		return favoris;
+		//return favoris;
+		return null;
 	}
 
 	public void setFavoris(List<Favoris> favoris) {
-		this.favoris = favoris;
+		//this.favoris = favoris;
 	}
 
 	@Override

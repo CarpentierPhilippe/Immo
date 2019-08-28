@@ -10,7 +10,7 @@ import com.edu.realestate.dao.SearchDao;
 @SuppressWarnings("unused")
 public class SpringTest {
 	
-	public static void main(String[] args) {
+	public static void oldmain(String[] args) {
 		
 		//Config depuis une class config
 		ApplicationContext springCtx = new AnnotationConfigApplicationContext(TestConfig.class, MaConfig.class);

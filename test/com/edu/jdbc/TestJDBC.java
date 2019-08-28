@@ -6,14 +6,16 @@ import java.util.List;
 import com.edu.realestate.dao.*;
 import com.edu.realestate.model.*;
 
+@SuppressWarnings("unused")
 public class TestJDBC {
-	public static void main(String[] args) throws Exception {
+	
+	public static void oldmain(String[] args) throws Exception {
 		TestJDBC test= new TestJDBC();
 		
-		test.testSearchCriteria();
+		//test.testSearchCriteria();
 		
 	}
-	
+	/*
 	public void test1() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		Date d = new Date();
 		System.out.println(d);
@@ -60,4 +62,5 @@ public class TestJDBC {
 			System.out.println(a);
 		
 	}
+	*/
 }

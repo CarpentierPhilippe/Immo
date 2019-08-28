@@ -2,8 +2,10 @@ package com.edu.realestate.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.edu.realestate.dao.CityDao;
 import com.edu.realestate.dao.SearchDao;
@@ -12,7 +14,7 @@ import com.edu.realestate.model.Advertisement;
 import com.edu.realestate.model.City;
 import com.edu.realestate.model.SearchCriteria;
 
-@Repository
+@Service @Transactional
 public class ReferenceServiceImpl implements ReferenceService {
 
 	@Autowired

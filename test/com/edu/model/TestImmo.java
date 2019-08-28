@@ -6,7 +6,7 @@ import com.edu.realestate.model.RealEstate;
 
 public class TestImmo {
 
-	public static void main(String[] args) {
+	public static void oldmain(String[] args) {
 		RealEstate re = new Apartment(1);
 		re.setArea((short)100);
 		re.setPrice(200000);

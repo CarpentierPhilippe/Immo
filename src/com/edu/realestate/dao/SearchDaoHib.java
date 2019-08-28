@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +20,6 @@ import com.edu.realestate.model.City;
 import com.edu.realestate.model.SearchCriteria;
 
 @Repository
-@Transactional
 public class SearchDaoHib extends AbstractDaoHib implements SearchDao {
 
 	private static final Logger LOGGER = LogManager.getLogger(SearchDaoHib.class);

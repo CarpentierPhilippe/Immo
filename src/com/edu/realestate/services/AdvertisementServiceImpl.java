@@ -5,8 +5,10 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.edu.realestate.dao.AdvertisementDao;
 import com.edu.realestate.exceptions.RealEstateException;
@@ -17,7 +19,7 @@ import com.edu.realestate.model.Favoris;
 import com.edu.realestate.model.Picture;
 import com.edu.realestate.model.User;
 
-@Repository
+@Service @Transactional
 public class AdvertisementServiceImpl implements AdvertisementService {
 
 	@Autowired

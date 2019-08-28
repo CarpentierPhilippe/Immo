@@ -3,15 +3,11 @@ package com.edu.realestate.dao;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.edu.realestate.model.City;
 
 @Repository
-@Qualifier("hibernate")
-@Transactional 
 public class CityDaoHib extends AbstractDaoHib implements CityDao {
 
 	@Override

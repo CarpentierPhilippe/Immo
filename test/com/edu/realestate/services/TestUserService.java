@@ -6,7 +6,7 @@ package com.edu.realestate.services;
 
 public class TestUserService {
 	
-	public static void main(String[] args) {
+	public static void oldmain(String[] args) {
 //		UserService userService = null; //new UserServiceMock();
 //		
 //		Moderator m = new Moderator();

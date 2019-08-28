@@ -16,6 +16,10 @@
         <Logger name="org.hibernate" level="info" additivity="false">
             <AppenderRef ref="Console-Appender"/>
         </Logger>
+        <Logger name="org.springframework" level="info" additivity="false">
+            <AppenderRef ref="Console-Appender"/>
+        </Logger>
+        
         <Root level="info">
             <AppenderRef ref="Console-Appender"/>
         </Root>

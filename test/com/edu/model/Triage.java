@@ -7,7 +7,7 @@ import com.edu.realestate.model.City;
 
 public class Triage {
 
-	public static void main(String[] args) {
+	public static void oldmain(String[] args) {
 		
 
 		City paris = new City(10, "Paris", "75000", 0d, 0d);

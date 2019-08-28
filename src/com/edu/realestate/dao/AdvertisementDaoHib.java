@@ -7,9 +7,7 @@ import java.util.stream.Stream;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.edu.realestate.model.AdStatus;
 import com.edu.realestate.model.Advertisement;
@@ -18,8 +16,6 @@ import com.edu.realestate.model.Favoris;
 import com.edu.realestate.model.User;
 
 @Repository
-@Qualifier("hibernate")
-@Transactional 
 public class AdvertisementDaoHib extends AbstractDaoHib implements AdvertisementDao {
 	
 	@Override

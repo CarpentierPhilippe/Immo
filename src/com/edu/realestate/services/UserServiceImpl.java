@@ -1,7 +1,9 @@
 package com.edu.realestate.services;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.edu.realestate.dao.UserDao;
 import com.edu.realestate.exceptions.AuthenticationException;
@@ -10,7 +12,8 @@ import com.edu.realestate.model.Advertiser;
 import com.edu.realestate.model.Moderator;
 import com.edu.realestate.model.User;
 
-@Repository
+@Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -28,7 +31,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User authenticate(String login, String password) throws AuthenticationException {
+		System.out.println("userDao");
 		return userDao.authenticate(login, password);
+
 	}
 
 	@Override

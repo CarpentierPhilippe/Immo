@@ -2,8 +2,10 @@ package com.edu.realestate.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.edu.realestate.dao.AdvertisementDao;
 import com.edu.realestate.exceptions.RealEstateException;
@@ -11,7 +13,7 @@ import com.edu.realestate.model.AdStatus;
 import com.edu.realestate.model.Advertisement;
 import com.edu.realestate.model.User;
 
-@Repository
+@Service @Transactional
 public class ModeratorServiceImpl implements ModeratorService {
 
 	@Autowired

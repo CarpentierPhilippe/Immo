@@ -5,7 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
 
 @Entity
 public class Favoris {
@@ -13,10 +15,15 @@ public class Favoris {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	@OneToOne @JoinColumn(name="owner")
+	
+	@OneToOne
+	@JoinColumn(name="owner")
 	private User owner;
-	@OneToOne @JoinColumn(name="advertisement_id")
+	
+	@ManyToOne
+	@JoinColumn(name="advertisement_id")
 	private Advertisement advertisement;
+	
 	private Integer priority;
 	private String comments;
 	

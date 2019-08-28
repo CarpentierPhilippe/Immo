@@ -79,7 +79,7 @@ public class HibernateTest {
 		
 		User user = service.authenticate("jmd@yahoo.fr", "pomme");
 		LOGGER.info("User Authenticate : "+user);
-		
+		/*
 		Advertiser advertiser = new Advertiser();
 		advertiser.setUsername("toSupp@gmail.com");
 		advertiser.setPassword("test");
@@ -95,7 +95,7 @@ public class HibernateTest {
 		 * TODO
 		service.disconnect(user);
 		*/
-		
+		/*
 		Advertisement adv = advService.findAdvertisementById(2);
 		/*
 		service.favAdvertisement(user, adv);

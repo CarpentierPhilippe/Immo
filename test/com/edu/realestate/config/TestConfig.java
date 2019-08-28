@@ -5,15 +5,12 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-@Configuration
-@Import(ServiceConfig.class)
-@PropertySource("config.properties")
+//Configuration
+//Import(ServiceConfig.class)
+//PropertySource("config.properties")
 public class TestConfig {
 	
 	@Autowired
